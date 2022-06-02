@@ -1,0 +1,63 @@
+#Here df.PredFinalReg column has the same values as yours df.Psg_OOS column. In conclusion df2.PredFinalReg==df.Psg_OOS
+
+###
+#Mean Error
+
+print('Mean Error 1 is:', np.sum(df2.Passengers - df2.FinalReg)/len(df2.Passengers))
+
+print('Mean Error 2 is:', np.sum(df2.Passengers - df2.PredFinalReg)/len(df2.Passengers))
+
+###
+#Mean Absolute Error
+
+print('Mean Absolute Error 1 is:', np.sum(np.abs(df2.Passengers - df2.FinalReg))/len(df2.Passengers))
+
+print('Mean Absolute Error 2 is:', np.sum(np.abs(df2.Passengers - df2.PredFinalReg))/len(df2.Passengers))
+
+###
+#Mean Squared Error
+
+print('Mean Squared Error 1 is:' ,np.square(np.subtract(df2.FinalReg,df2.Passengers)).mean())
+
+print('Mean Squared Error 2 is:' ,np.square(np.subtract(df2.PredFinalReg,df2.Passengers)).mean())
+
+###
+#Root Mean Squared Error
+
+print('Root Mean Squared Error 1 is:' ,mt.sqrt(np.square(np.subtract(df2.FinalReg,df2.Passengers)).mean()))
+
+print('Root Mean Squared Error 1 is:' ,mt.sqrt(np.square(np.subtract(df2.PredFinalReg,df2.Passengers)).mean()))
+
+###
+#Mean Percentage Error
+
+print('Mean Percentage Error 1 is:', (np.sum((df2.Passengers-df2.FinalReg) / df2.Passengers)/len(df2.Passengers)) * 100)
+
+print('Mean Percentage Error 2 is:', (np.sum((df2.Passengers-df2.PredFinalReg) / df2.Passengers)/len(df2.Passengers)) * 100)
+
+###
+#Mean Absolute Percentage Error
+
+print('Mean Absolute Percentage Error 1 is:', (np.sum(np.abs(df2.Passengers-df2.FinalReg) / np.abs(df2.Passengers))/len(df2.Passengers)) * 100)
+
+print('Mean Absolute Percentage Error 2 is:', (np.sum(np.abs(df2.Passengers-df2.PredFinalReg) / np.abs(df2.Passengers))/len(df2.Passengers)) * 100)
+
+###
+#Rank correlation
+
+print('Rank correlation 1 is:', 1-(6*np.sum(np.square(df2.Passengers.rank()-df2.FinalReg.rank())))/(len(df2.Passengers)*(len(df2.Passengers)**2-1)))
+
+print('Rank correlation 2 is:', 1-(6*np.sum(np.square(df2.Passengers.rank()-df2.PredFinalReg.rank())))/(len(df2.Passengers)*(len(df2.Passengers)**2-1)))
+
+###
+#The Mean Directional Accuracy
+
+print ("The Mean Directional Accuracy is:" , np.mean((np.sign(df2.Passengers[1:] - df2.Passengers[:-1]) == np.sign(df2.FinalReg[1:] - df2.FinalReg[:-1])).astype(int)))
+
+print ("The Mean Directional Accuracy is:" , np.mean((np.sign(df2.Passengers[1:] - df2.Passengers[:-1]) == np.sign(df2.PredFinalReg[1:] - df2.PredFinalReg[:-1])).astype(int)))
+
+###
+#Mean Absolute Scaled Error
+
+print('Mean Absolute Scaled Error is:', (np.sum(np.abs(df2.Passengers - df2.FinalReg))/len(df2.Passengers))/(np.sum(np.abs(df2.Passengers - df2.PredFinalReg))/len(df2.Passengers)))
+
